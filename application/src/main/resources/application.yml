@@ -1,8 +1,8 @@
 
 app:
   banner:
-    label: "LOCAL"
-    color: "DarkViolet"
+    label: "DIGITALOCEAN"
+    color: "blue"
 
 management:
   endpoints:
