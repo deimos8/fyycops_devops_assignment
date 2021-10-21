@@ -2,7 +2,7 @@ https://docs.digitalocean.com/products/kubernetes/how-to/configure-load-balancer
 
 kcf apply -f ../assignments/loadb.yml
 
-kcf describe pods demoapp-loadbalancer
+kcf describe service http-lb
 
 
 kcf get service

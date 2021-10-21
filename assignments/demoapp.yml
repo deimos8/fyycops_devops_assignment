@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: demoapp-l
+  name: demoapp-l
+spec:
+  containers:
+  - image: registry.hub.docker.com/hansimais/demoapp
+    imagePullPolicy: Always
+    name: demoapp-l
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    livenessProbe:
+      httpGet:
+        scheme: HTTP
+        path: /actuator/health/liveness
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 5
+    readinessProbe:
+      httpGet:
+        scheme: HTTP
+        path: /actuator/health/readiness
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+
