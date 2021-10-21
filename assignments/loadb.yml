@@ -1,0 +1,33 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-lb
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "fyy.maislinger.io"
+spec:
+  type: LoadBalancer
+  selector:
+    run: demoapp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+
+
+#metadata:
+#  name: http-protocol-snippet
+#  annotations:
+    #service.beta.kubernetes.io/do-loadbalancer-certificate-id: "1234-5678-9512-3456"
+#    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
+#    service.beta.kubernetes.io/do-loadbalancer-algorithm: "least_connections"
+#    service.beta.kubernetes.io/do-loadbalancer-http-ports: "80,8080"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-port: "8080"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: "/health"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-check-interval-seconds: "3"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-response-timeout-seconds: "5"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-unhealthy-threshold: "3"
+    #service.beta.kubernetes.io/do-loadbalancer-healthcheck-healthy-threshold: "5"
